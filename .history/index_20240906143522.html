@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OAuth Form</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container d-flex vh-100">
+        <div class="row justify-content-center align-self-center w-100">
+            <div class="col-md-6">
+                <form id="oauthForm" class="p-4 border rounded bg-light">
+                    <div class="mb-3">
+                        <label for="client_id" class="form-label">Client ID</label>
+                        <input type="text" class="form-control" id="client_id" name="client_id" placeholder="Client ID" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="client_secret" class="form-label">Client Secret</label>
+                        <input type="password" class="form-control" id="client_secret" name="client_secret" placeholder="Client Secret" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Salesforce Username</label>
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Salesforce Username" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Salesforce Password + Token</label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Salesforce Password + Token" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Get Token</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('oauthForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevents form from reloading the page
+            let clientId = document.getElementById("client_id").value;
+            let clientSecret = document.getElementById("client_secret").value;
+            let username = document.getElementById("username").value;
+            let password = document.getElementById("password").value;
+          
+
+
+            var param = {
+                grant_type: "password",
+                client_id : `${clientId}`,
+                client_secret :`${clientSecret}` ,
+                username: `${username}`,
+                password: `${password}`,
+          
+          }
+           
+
+            console.log(clientId, clientSecret, username, password);
+            $.ajax({
+                url: 'https://test.salesforce.com/services/oauth2/token',
+                type: 'POST',
+                data: param,
+                dataType: "json",
+                contentType: "application/x-www-form-urlencoded",
+                success: function (data) {
+                    alert(data);
+                }
+            
+            });
+            // Add your fetch call or AJAX request here to handle API token request
+        });
+  
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <form id="oauthForm" action="https://login.salesforce.com/services/oauth2/token" method="POST">
+        <input type="hidden" name="grant_type" value="password" />
+        <label for="client_id">Client ID:</label>
+        <input type="text" id="client_id" name="client_id" required /><br>
+        
+        <label for="client_secret">Client Secret:</label>
+        <input type="password" id="client_secret" name="client_secret" required /><br>
+        
+        <label for="username">Salesforce Username:</label>
+        <input type="text" id="username" name="username" required /><br>
+        
+        <label for="password">Salesforce Password + Security Token:</label>
+        <input type="password" id="password" name="password" required /><br>
+        
+        <input type="submit" value="Get Token" />
+    </form>
+<script>
+</script>        
+</body>
+</html>
+

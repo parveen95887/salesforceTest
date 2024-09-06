@@ -1,0 +1,19 @@
+// let getdaty=document.querySelector("#selday").value;
+
+// console.log(getdaty);
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    const selectElement = document.querySelector("#selday");
+    const heading = document.querySelector("#heading");
+
+    // Update heading with the initially selected day
+    heading.textContent = `Hi Anurag Bro, Selected day: ${selectElement.value}`;
+
+    // Add event listener to update the heading when the selected day changes
+    selectElement.addEventListener("change", function() {
+        const selectedDay = selectElement.value;
+        heading.textContent = `Hi Anurag Bro, Selected day: ${selectedDay}`;
+    });
+});
